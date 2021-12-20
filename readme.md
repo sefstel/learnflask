@@ -6,3 +6,4 @@ FLASK_APP=microblog.py
 
 flask run
 
+Ссылка на урок https://habr.com/ru/post/346342/
