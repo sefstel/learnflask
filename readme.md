@@ -6,4 +6,6 @@ FLASK_APP=microblog.py
 
 flask run
 
-Ссылка на урок https://habr.com/ru/post/346344/
+Возможно использовать команду flask shell для отладки приложения
+
+Ссылка на урок https://habr.com/ru/post/346346/
