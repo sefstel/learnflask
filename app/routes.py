@@ -48,3 +48,10 @@ def blog():
         return redirect(url_for('blog'))
     posts = Blog.query.all()
     return render_template('blog.html',form=form,posts = posts)
+
+@app.route('/blog/<int:id>')
+def delete_blog(id):
+    post = Blog.query.get(id)
+    db.session.delete(post)
+    db.session.commit()
+    return redirect(url_for('blog'))
