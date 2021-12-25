@@ -1,6 +1,8 @@
 from flask import render_template, flash, redirect, url_for
 from app import app
-from app.forms import LoginForm
+from app.forms import LoginForm, BlogForm
+from app import db
+from app.models import Blog
 
 @app.route('/')
 @app.route('/index')
@@ -34,3 +36,15 @@ def login():
         ))
         return redirect(url_for('index'))
     return render_template('login.html',title='Sign in',form=form)
+
+
+@app.route('/blog',methods=['GET','POST'])
+def blog():
+    form = BlogForm()
+    if form.validate_on_submit():
+        post =  Blog(author = form.author.data, body = form.body.data)
+        db.session.add(post)
+        db.session.commit()
+        return redirect(url_for('blog'))
+    posts = Blog.query.all()
+    return render_template('blog.html',form=form,posts = posts)

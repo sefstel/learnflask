@@ -18,3 +18,8 @@ class Post(db.Model):
 
     def __repr__(self):
         return '<Post {}>'.format(self.body)
+
+class Blog(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    author = db.Column(db.String(15),index = True)
+    body = db.Column(db.String(500))

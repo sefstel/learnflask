@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
 import flask_wtf
 from wtforms import StringField,PasswordField,BooleanField,SubmitField
+import wtforms
 from wtforms.validators import DataRequired
 
 class LoginForm(FlaskForm):
@@ -9,3 +10,7 @@ class LoginForm(FlaskForm):
     remember_me = BooleanField('Remember Me')
     submit = SubmitField('Sign In')
     
+class BlogForm(FlaskForm):
+    author = StringField('Автор',validators=[DataRequired()])
+    body = wtforms.TextAreaField('Текст',validators=[DataRequired()])
+    submit = SubmitField('Написать')
