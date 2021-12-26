@@ -52,6 +52,7 @@ def blog():
 @app.route('/blog/<int:id>')
 def delete_blog(id):
     post = Blog.query.get(id)
-    db.session.delete(post)
-    db.session.commit()
+    if post:
+        db.session.delete(post)
+        db.session.commit()
     return redirect(url_for('blog'))
